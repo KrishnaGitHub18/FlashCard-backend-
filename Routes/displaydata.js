@@ -11,7 +11,7 @@ router.get('/displaydata', (req, res) => {
     db.query(query, (err, results) => {
         if (err) {
             console.error('Error fetching data:', err);
-            return res.status(500).send('Error fetching data');
+            return res.status(500).send('Error fetching data', err);
         }
 
         res.status(200).json(results); 
