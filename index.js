@@ -19,10 +19,10 @@ app.use('/api', require('./Routes/addData'));
 app.use('/api', require('./Routes/editData'));
 app.use('/api', require('./Routes/deleteData'));
 app.use('/api', require('./Routes/displaydata'));
+// app.use('/api', require('./Routes/login'));
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
-    // console.log(card_data);
 });
 
 app.listen(port, () => {
