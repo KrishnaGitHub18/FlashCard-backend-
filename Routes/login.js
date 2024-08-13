@@ -5,30 +5,33 @@ const jwtSecret = "dc3d2#829ece#e64f05c2e6f3f#16da39$8daa9$9mft#vdfe28a313f3788f
 
 router.post('/login', (req, res) => {
 
-        try{
-            let username = req.body.username ;
-            let password = req.body.password ;
+    try {
+        let username = req.body.username;
+        let password = req.body.password;
 
-            if (username === 'admin123' && password === 'admin123'){
-                data = {
-                    username : username
-                }
+        if (username === 'admin123' && password === 'admin123') {
+            data = {
+                username: username
             }
-            const authToken = jwt.sign(data, jwtSecret);
+
+            const authToken = jwt.sign(data, jwtSecret, { expiresIn: '3h' });
             res.status(200).json(
-                { 
+                {
                     success: true,
-                    authToken: authToken 
+                    authToken: authToken
                 }
             );
+        }
+        else {
+            res.json({success: false})
+        }
 
-            res.sendStatus(authToken) ;
-        }
-        catch (error) {
-            console.log("Error in registering the new user", error);
-            res.json({ success: false });
-        }
     }
+    catch (error) {
+        console.log("Error in registering the new user", error);
+        res.json({ success: false });
+    }
+}
 )
 
 module.exports = router;
