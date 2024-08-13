@@ -6,7 +6,7 @@ const pool = mysql.createConnection({
     password: '8kO9wADnrA2SzbFEoeDv',
     database: 'btewxoxfppx6u1tumta6',
     connectionLimit: 10,
-}) ;
+})  ;
  
 // const pool = mysql.createConnection({
 //     host: 'localhost',
