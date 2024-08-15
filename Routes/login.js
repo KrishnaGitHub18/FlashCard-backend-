@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const jwtSecret = "dc3d2#829ece#e64f05c2e6f3f#16da39$8daa9$9mft#vdfe28a313f3788f7ad";
+require('dotenv').config();
 
 router.post('/login', (req, res) => {
 
@@ -9,7 +10,10 @@ router.post('/login', (req, res) => {
         let username = req.body.username;
         let password = req.body.password;
 
-        if (username === 'admin123' && password === 'admin123') {
+        console.log("username:",username,process.env.CORRECT_USERNAME);
+        console.log("password:",password,process.env.CORRECT_PASSWORD);
+
+        if ( username === process.env.CORRECT_USERNAME && password === process.env.CORRECT_PASSWORD ) {
             data = {
                 username: username
             }
@@ -23,13 +27,13 @@ router.post('/login', (req, res) => {
             );
         }
         else {
-            res.json({success: false})
+            res.status(401).json({success: false})
         }
 
     }
     catch (error) {
         console.log("Error in registering the new user", error);
-        res.json({ success: false });
+        res.status(400).json({ success: false });
     }
 }
 )
