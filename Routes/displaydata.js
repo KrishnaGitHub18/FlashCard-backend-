@@ -5,7 +5,6 @@ const db = require('../database');
 
 router.get('/displaydata', (req, res) => {
 
-
     const query = 'SELECT * FROM card';
 
     db.query(query, (err, results) => {
@@ -16,7 +15,6 @@ router.get('/displaydata', (req, res) => {
 
         res.status(200).json(results); 
     });
-
 
 });
 

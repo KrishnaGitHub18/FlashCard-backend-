@@ -9,9 +9,6 @@ router.post('/add-data', async (req, res) => {
         return res.status(400).send('Question and answer are required');
     }
 
-
-
-
     // fetching the data
     let curr_data = [];
     try {
@@ -24,10 +21,6 @@ router.post('/add-data', async (req, res) => {
     const size_data = curr_data.length;
 
     let cardid = size_data;
-
-
-
-
 
 
     const query = 'INSERT INTO card (cardid, cardque, cardans) VALUES (?, ?, ?)';

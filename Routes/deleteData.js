@@ -5,14 +5,11 @@ const db = require('../database');
 
 router.delete('/delete-data/:cardId', (req, res) => {
 
-
-    // const cardId = req.body.cardid;
     const { cardId } = req.params;
 
     if (!cardId) {
         return res.status(400).send('Card ID is required');
     }
-
 
     const query = 'DELETE FROM card WHERE cardid = ?';
 

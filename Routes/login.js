@@ -1,17 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const jwtSecret = "dc3d2#829ece#e64f05c2e6f3f#16da39$8daa9$9mft#vdfe28a313f3788f7ad";
 require('dotenv').config();
+
+const jwtSecret = process.env.JWT_SECRET_TOKEN;
 
 router.post('/login', (req, res) => {
 
     try {
         let username = req.body.username;
         let password = req.body.password;
-
-        console.log("username:",username,process.env.CORRECT_USERNAME);
-        console.log("password:",password,process.env.CORRECT_PASSWORD);
 
         if ( username === process.env.CORRECT_USERNAME && password === process.env.CORRECT_PASSWORD ) {
             data = {

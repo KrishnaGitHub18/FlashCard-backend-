@@ -11,10 +11,6 @@ router.put('/edit-data/:cardid', async (req, res) => {
         return res.status(400).send('Please fill the require sections.');
     }
 
-
-
-
-
     try {  
 
         const [rows] = await db.promise().execute('SELECT * FROM card WHERE cardid = ?', [cardid]);
@@ -22,10 +18,8 @@ router.put('/edit-data/:cardid', async (req, res) => {
             return res.status(404).send('Card not found');
         }
 
-
         const query = 'UPDATE card SET cardque = ?, cardans = ? WHERE cardid = ?';
         const [result] = await db.promise().execute(query, [cardque, cardans, cardid]);
-
 
         if (result.affectedRows === 0) {
             return res.status(500).send('Failed to update the card');

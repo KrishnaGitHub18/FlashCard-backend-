@@ -1,19 +1,13 @@
 const mysql = require('mysql2');
+require('dotenv').config();
 
 const pool = mysql.createConnection({
-    host: 'btewxoxfppx6u1tumta6-mysql.services.clever-cloud.com',
-    user: 'uvheie1gmhxjg4ix',
-    password: '8kO9wADnrA2SzbFEoeDv',
-    database: 'btewxoxfppx6u1tumta6',
+    host: process.env.SQL_DB_HOST,
+    user: process.env.SQL_DB_USER,
+    password: process.env.SQL_DB_PASSWORD,
+    database: process.env.SQL_DB_DATABASENAME,
     connectionLimit: 10,
 })  ;
- 
-// const pool = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'Krishna@18092003',
-//     database: 'Flashcard',
-// });
 
 pool.connect((err) => {
     if (err) {
