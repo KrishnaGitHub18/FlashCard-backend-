@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database');
+const protectRoute = require('../middleware/protectData')
 
-router.put('/edit-data/:cardid', async (req, res) => {
+router.put('/edit-data/:cardid', protectRoute, async (req, res) => {
 
     const { cardid } = req.params;
     const { cardque, cardans } = req.body;

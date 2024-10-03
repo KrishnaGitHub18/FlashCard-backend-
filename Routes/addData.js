@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database');
+const protectRoute = require('../middleware/protectData')
 
-router.post('/add-data', async (req, res) => {
+router.post('/add-data', protectRoute, async (req, res) => {
     const { cardque, cardans } = req.body;
 
     if (!cardque || !cardans) {
