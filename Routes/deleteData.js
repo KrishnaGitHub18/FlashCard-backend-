@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database'); 
+const protectRoute = require('../middleware/protectData')
 
-
-router.delete('/delete-data/:cardId', (req, res) => {
+router.delete('/delete-data/:cardId', protectRoute, (req, res) => {
 
     const { cardId } = req.params;
 

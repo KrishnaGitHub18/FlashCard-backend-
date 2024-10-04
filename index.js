@@ -20,6 +20,15 @@ app.use('/api', require('./Routes/editData'));
 app.use('/api', require('./Routes/deleteData'));
 app.use('/api', require('./Routes/displaydata'));
 app.use('/api', require('./Routes/login'));
+app.use('/api', require('./Routes/loginHead'));
+app.use('/api', require('./Routes/signup'));
+app.use('/api', require('./Routes/waitlist'));
+app.use('/api', require('./Routes/displaywaitlist'));
+app.use('/api', require('./Routes/deleteFromWaitlist'));
+app.use('/api', require('./controller/emailController'));
+
+//middleware
+app.use('/api', require('./middleware/protectData'));
 
 app.get('/', (req, res) => {
     res.send('Hello World!');

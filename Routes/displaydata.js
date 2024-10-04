@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database'); 
 
-
 router.get('/displaydata', (req, res) => {
 
     const query = 'SELECT * FROM card';
