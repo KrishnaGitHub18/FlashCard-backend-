@@ -2,19 +2,19 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database'); 
 
-router.get('/displaydata', (req, res) => {
+router.get('/displaydata', async (req, res) => {
+    try {
 
-    const query = 'SELECT * FROM card';
+        const query = 'SELECT * FROM card';
+        const [results] = await db.promise().query(query); 
+        res.status(200).json({ success: true, data: results });
 
-    db.query(query, (err, results) => {
-        if (err) {
-            console.error('Error fetching data:', err);
-            return res.status(500).send('Error fetching data', err);
-        }
+    } catch (error) {
 
-        res.status(200).json(results); 
-    });
-
+        console.error('Error fetching data:', error);
+        res.status(500).json({ success: false, message: 'Error fetching data', error });
+    
+    }
 });
 
 module.exports = router;
