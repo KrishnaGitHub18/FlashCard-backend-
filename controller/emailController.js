@@ -21,7 +21,7 @@ router.post('/email', async (req, res) => {
     
         // send mail with defined transport object
         const info = await transporter.sendMail({
-            from: '"Team FLT" <donotreply@flashcard.vercel.app>', // sender address
+            from: '"Team FLT" <donotreply12343@gmail.com>', // sender address
             to: email, // list of receivers
             subject: "Admin Request Approved", // Subject line
             // text: "", // plain text body
