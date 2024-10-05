@@ -6,10 +6,10 @@ router.post('/email', async (req, res) => {
 
     const { username, email, passwor } = req.body;
 
+    // console.log(username, email, passwor);
+    // return;
     try {
         const transporter = nodemailer.createTransport({
-            // host: 'smtp.ethereal.email',
-            // port: 587,
             service: 'gmail',
             auth: {
                 // user: 'donotreply12343@gmail.com',
@@ -53,6 +53,7 @@ router.post('/email', async (req, res) => {
         console.log("Message sent: %s", info.messageId);
         // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
         console.log(info.json);
+        return;
     
     } catch (error) {
         console.error("Error sending email:", error);
