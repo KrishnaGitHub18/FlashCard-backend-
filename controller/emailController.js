@@ -50,10 +50,12 @@ router.post('/email', async (req, res) => {
             `,
         });
     
-        console.log("Message sent: %s", info.messageId);
-        // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-        console.log(info.json);
-        return;
+        // console.log("Message sent: %s", info.messageId);
+        // // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+        // console.log(info.json);
+        // return;
+
+        res.status(200).send("Message sent: %s", info.messageId, "info.json = ", info.json);
     
     } catch (error) {
         console.error("Error sending email:", error);
